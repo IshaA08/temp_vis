@@ -25,26 +25,30 @@ with open(filename) as f:
     for index, column_header in enumerate(header_row):
         print(index, column_header)
 
-    # Get the daily max temps and corresponding dates
-    dates, highs = [], []
+    # Get the daily max/min temperatures and their corresponding dates
+    dates, highs, lows = [], [], []
     for row in reader:
         if not is_number(row[3]):
             continue
-        current_date = datetime.strptime(row[4][0:10], '%Y-%m-%d')
+        date = datetime.strptime(row[4][0:10], '%Y-%m-%d')
+        dates.append(date)
         high = float(row[3])
-        dates.append(current_date)
         highs.append(high)
+        low = float(row[2])
+        lows.append(low)
 
 print(dates)
 print(highs)
+print(lows)
 
-# Plot the extracted max temperatures
+# Plot the extracted temperatures
 plt.style.use('seaborn')
 fig, ax = plt.subplots()
 ax.plot(dates, highs, c='red')
+ax.plot(dates, lows, c='blue')
 
 # Format the plot
-plt.title("Daily high temperatures, June-July 2024", fontsize=24)
+plt.title("Daily high and low temperatures, June-July 2024", fontsize=24)
 plt.xlabel('', fontsize=16)
 fig.autofmt_xdate()
 plt.ylabel("Temperature (C)", fontsize=16)
