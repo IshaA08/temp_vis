@@ -44,8 +44,9 @@ print(lows)
 # Plot the extracted temperatures
 plt.style.use('seaborn')
 fig, ax = plt.subplots()
-ax.plot(dates, highs, c='red')
-ax.plot(dates, lows, c='blue')
+ax.plot(dates, highs, c='red', alpha=0.6)
+ax.plot(dates, lows, c='blue', alpha=0.6)
+plt.fill_between(dates, highs, lows, facecolor='purple', alpha=0.1)
 
 # Format the plot
 plt.title("Daily high and low temperatures, June-July 2024", fontsize=24)
