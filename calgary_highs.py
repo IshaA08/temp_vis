@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 # Check if a given string is a number or not
 # Reference for this method: 
@@ -33,3 +34,16 @@ with open(filename) as f:
 
 print(highs)
 
+# Plot the extracted max temperatures
+plt.style.use('seaborn')
+fig, ax = plt.subplots()
+ax.plot(highs, c='pink')
+
+# Format the plot
+plt.title("Daily high temperatures, June-July 2024", fontsize=24)
+plt.xlabel('', fontsize=16)
+plt.ylabel("Temperature (C)", fontsize=16)
+plt.tick_params(axis='both', which='major', labelsize=16)
+
+# Display the plot
+plt.show()
