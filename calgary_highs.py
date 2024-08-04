@@ -37,7 +37,7 @@ print(highs)
 # Plot the extracted max temperatures
 plt.style.use('seaborn')
 fig, ax = plt.subplots()
-ax.plot(highs, c='pink')
+ax.plot(highs, c='red')
 
 # Format the plot
 plt.title("Daily high temperatures, June-July 2024", fontsize=24)
