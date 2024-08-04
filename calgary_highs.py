@@ -19,11 +19,6 @@ with open(filename) as f:
     # Read the header information
     reader = csv.reader(f)
     header_row = next(reader)
-    print(header_row)
-
-    # Print the headers and their positions so we don't forget
-    for index, column_header in enumerate(header_row):
-        print(index, column_header)
 
     # Get the daily max/min temperatures and their corresponding dates
     dates, highs, lows = [], [], []
@@ -36,10 +31,6 @@ with open(filename) as f:
         highs.append(high)
         low = float(row[2])
         lows.append(low)
-
-print(dates)
-print(highs)
-print(lows)
 
 # Plot the extracted temperatures
 plt.style.use('seaborn')
